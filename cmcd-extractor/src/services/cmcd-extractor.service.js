@@ -27,7 +27,7 @@ export const cmcdExtractorService = async ({id, req, reqURI, decodedJson, dateSt
     body.errors = validatorRes.errors;
     body.warnings = validatorRes.warnings;
     body['cmcd_keys'] = validatorRes.parsedData;
-    if(body['cmcd_keys']['ts']){
+    if(body['cmcd_keys'] && body['cmcd_keys']['ts']){
         body['cmcd_keys']['ts-date'] = new Date(body['cmcd_keys']['ts']).toISOString()
     }
     body['cmcd_data'] = validatorRes.rawData;
