@@ -47,7 +47,8 @@ export const videoTest = (req, res, next) => {
 
     try {
         proxy(req, res, next);
-        cmcdExtractorService({id, req, reqURI, dateStart});   
+        const cmcdMode = "request"
+        cmcdExtractorService({id, req, reqURI, dateStart, cmcdMode});   
     } catch (error) {
         log(id, error, 'error');
         res.status(500).json({ message: 'Internal Server Error' });

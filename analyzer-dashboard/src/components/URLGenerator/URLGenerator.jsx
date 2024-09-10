@@ -12,8 +12,9 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 function URLGenerator(props) {
   const {setIndex} = props;
-  const [field1, setField1] = useState('');
-  const [ip, setIp] = useState('localhost');
+  const parentSetGeneratedUrl = props.setGeneratedURL;
+  const [field1, setField1] = useState('https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd');
+  const [ip, setIp] = useState(window.location.hostname);
   const [port, setPort] = useState('3000');
   const [generatedURL, setGeneratedURL] = useState('');
   const [field1Error, setField1Error] = useState(false);
@@ -68,6 +69,8 @@ function URLGenerator(props) {
     else {
       const url = `http://${ipValue}:${portValue}/video/${uuid}/${divideURL(field1)}`;
       setGeneratedURL(url);
+      console.log(parentSetGeneratedUrl)
+      parentSetGeneratedUrl(url);
     }
   };
 

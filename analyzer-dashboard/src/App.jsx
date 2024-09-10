@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './App.css'
-import DataTable from './components/DataTable/DataTable';
+// import DataTable from './components/DataTable/DataTable';
 import URLGenerator from './components/URLGenerator/URLGenerator';
 
 function App() {
 
   const [index, setIndex] = useState(''); 
+  const [generatedURL, setGeneratedURL] = useState('');
   
   return (
     <div>
@@ -15,13 +16,14 @@ function App() {
       <div className="custom-row">
         <div className='col'>
           <div className="container-box">
-            <URLGenerator setIndex={setIndex} index={index}/>
+            <URLGenerator setIndex={setIndex} index={index} setGeneratedURL={setGeneratedURL}/>
           </div>
         </div>
-        { index ? (
+        { generatedURL ? (
             <div className='col'>
               <div className="container-box">
-                <DataTable index={index} />
+                 {/* <DataTable index={index} /> */}
+                <iframe src={`public/cmcd.html?url=${generatedURL}`}></iframe>
               </div>
             </div>
         ) : (
