@@ -3,12 +3,21 @@ import { client } from '../config.js';
 
 const log = async (id, value, level) => {
     jsLogger.useDefaults({ defaultLevel: jsLogger.TRACE });
-    jsLogger[level](`${id}: ${JSON.stringify(value)}`);
 
+    // TODO: Remove error field, we need to fix errors mapping
+    let data = {...value}
+    if (data.errors){
+        delete data.errors
+    }
+    if (data.valid){
+        delete data.valid
+    }
+
+    jsLogger[level](`${id}: ${JSON.stringify(data)}`);
     try {
         await client.index({
             index: `logs-${id}`,
-            body: value
+            body: data
         });
     } catch (error) {
         jsLogger.error(`${id}: `, error);

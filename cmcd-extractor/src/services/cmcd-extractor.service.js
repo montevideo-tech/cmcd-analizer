@@ -13,7 +13,8 @@ export const cmcdExtractorService = async ({id, req, reqURI, decodedJson, dateSt
 
     body.id = id;
     body['user-agent'] = req.headers['user-agent'];
-    body['request_ip'] = req.headers.origin;
+    body['request_origin'] = req.headers.origin;
+    body['request_ip'] = req.ip;
     body['received_datetime'] = dateStart;
     body['returned_datetime'] = new Date().toISOString(); 
     body['cdn_request_url'] = reqURI;
@@ -26,6 +27,9 @@ export const cmcdExtractorService = async ({id, req, reqURI, decodedJson, dateSt
     body.errors = validatorRes.errors;
     body.warnings = validatorRes.warnings;
     body['cmcd_keys'] = validatorRes.parsedData;
+    if(body['cmcd_keys']['ts']){
+        body['cmcd_keys']['ts-date'] = new Date(body['cmcd_keys']['ts']).toISOString()
+    }
     body['cmcd_data'] = validatorRes.rawData;
     
     saveData(id, body);
