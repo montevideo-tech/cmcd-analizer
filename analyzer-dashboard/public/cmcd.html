@@ -35,6 +35,14 @@
             return urlParams.get(param);
         }
 
+        function obtenerUltimos10Caracteres(str) {
+            // Comprobar si la longitud del string es menor que 10
+            if (str.length <= 20) {
+                return str; // Retornar la cadena completa si es más corta que 10 caracteres
+            }
+            return str.slice(-20); // Devolver los últimos 10 caracteres
+        }
+
         function init() {
             var video;
             var url = getQueryParam('url'); // https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd
@@ -72,7 +80,7 @@
                             }
                         },
                         /*sid: 'b248658d-1d1a-4039-91d0-8c08ba597da5',*/ /* session id send with each request */
-                        cid: '21cf726cfe3d937b5f974f72bb5bd06a', /* content id send with each request */
+                        cid: obtenerUltimos10Caracteres(url), /* content id send with each request */
                         mode: CMCD_MODE_QUERY, /* global mode if not specified in each mode */
                         enabledKeys: ['br', 'd', 'ot', 'tb' , 'bl', 'dl', 'mtp', 'nor', 'nrr', 'su' , 'bs', 'rtp' , 'cid', 'pr', 'sf', 'sid', 'st', 'v', 'sta', 'ltc', 'msd', 'sta']
                     }
