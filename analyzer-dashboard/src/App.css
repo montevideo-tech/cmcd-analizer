@@ -19,6 +19,7 @@ body {
   width: 16em;
   will-change: filter;
   transition: filter 300ms;
+  filter: brightness(0) invert(1);
 }
 
 .logo:hover {
