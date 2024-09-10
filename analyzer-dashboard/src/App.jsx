@@ -10,8 +10,8 @@ function App() {
   
   return (
     <div>
-      <a className="logo" href="https://montevideotech.dev/" target="_blank" rel="noreferrer">
-        <img src="https://montevideotech.dev/wp-content/uploads/2020/09/mvd-tech-1.png" alt="Logo" className="logo"/>
+      <a className="logo" href="https://www.qualabs.com/" target="_blank" rel="noreferrer">
+        <img src="https://www.qualabs.com/packages/website/images/logos/qualabs.svg" alt="Logo" className="logo"/>
       </a>
       <div className="custom-row">
         <div className='col'>
