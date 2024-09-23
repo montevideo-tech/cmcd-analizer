@@ -16,7 +16,7 @@ const log = async (id, value, level) => {
     jsLogger[level](`${id}: ${JSON.stringify(data)}`);
     try {
         await client.index({
-            index: `logs-${id}`,
+            index: `logs-cmcd`,
             body: data
         });
     } catch (error) {

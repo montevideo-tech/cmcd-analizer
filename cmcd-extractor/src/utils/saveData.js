@@ -16,7 +16,7 @@ export const saveData = async (id, validatorRes) => {
     try {
         jsLogger.info(`${id}: Saving data into the database...`);
         await client.index({
-            index: `cmcd-${id}`,
+            index: `cmcd-v2`,
             body: data
         });
         jsLogger.info(`${id}: Data has been saved successfully.`);
