@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>CMCD Reporting</title>
 
-    <script src="./dash.all.debug.js"></script>
+    <script src="./dash.all.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="./lib/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -47,8 +47,6 @@
             var video;
             var url = getQueryParam('url'); // https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd
             var autoplay = getQueryParam('autoplay') == "true";
-            console.log("AUTOPLAY: ")
-            console.log(autoplay);
 
             player = dashjs.MediaPlayer().create();
             video = document.querySelector('video');
@@ -69,7 +67,7 @@
                             responseMode: {
                                 enabled: true, /* enable cmcdv2 response mode. FALSE by default */
                                 mode: CMCD_MODE_QUERY, /* overrides global mode. JSON not supported */
-                                enabledKeys: ['sid', 'cid', 'ts', 'url', 'br', 'd', 'ot', 'tb', 'v', 'sta', 'ttfb', 'ttlb','rc'], /* optional, overrides global keys */
+                                //enabledKeys: ['sid', 'cid', 'ts', 'url', 'br', 'd', 'ot', 'tb', 'v', 'sta', 'ttfb', 'ttlb','rc', 'msd'], /* optional, overrides global keys */
                                 requestUrl: 'http://' + window.location.hostname + ':3000/cmcd/response-mode', /*mandatory, URL to send report */
                                 requestMethod: 'POST', /*optional, get by default */
                             },
@@ -77,7 +75,7 @@
                                 enabled: true, /* enable cmcdv2 state-interval mode. FALSE by default */
                                 mode: CMCD_MODE_QUERY, /*overrides global mode. JSON not supported */
                                 interval: 10000,  /* time in ms between regular requests. Default 30s or 0 to omit */
-                                enabledKeys: ['sta', 'sid', 'cid', 'sf', 'v', 'ltc', 'msd', 'sta'], /* Currently only supports: 'sta', 'ts', 'sid', 'cid', 'sf', 'v', 'lb', 'pr' */
+                                //enabledKeys: ['sta', 'sid', 'cid', 'sf', 'v', 'ltc', 'msd', ], /* Currently only supports: 'sta', 'ts', 'sid', 'cid', 'sf', 'v', 'lb', 'pr' */
                                 requestUrl: 'http://' + window.location.hostname + ':3000/cmcd/state-interval-mode', /* mandatory, URL to send report */
                                 requestMethod: 'POST',  /* optional, get by default */
                             }
