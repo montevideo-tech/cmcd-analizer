@@ -7,7 +7,8 @@ function App() {
 
   const [index, setIndex] = useState(''); 
   const [generatedURL, setGeneratedURL] = useState('');
-  
+  const [autoplay, setAutoplay] = useState(false);
+
   return (
     <div>
       <a className="logo" href="https://www.qualabs.com/" target="_blank" rel="noreferrer">
@@ -16,14 +17,14 @@ function App() {
       <div className="custom-row">
         <div className='col'>
           <div className="container-box">
-            <URLGenerator setIndex={setIndex} index={index} setGeneratedURL={setGeneratedURL}/>
+            <URLGenerator setIndex={setIndex} index={index} setAutoplay={setAutoplay} autoplay={autoplay} setGeneratedURL={setGeneratedURL}/>
           </div>
         </div>
         { generatedURL ? (
             <div className='col'>
               <div className="container-box">
                  {/* <DataTable index={index} /> */}
-                <iframe src={`public/cmcd.html?url=${generatedURL}`}></iframe>
+                <iframe src={`public/cmcd.html?autoplay=${autoplay}&url=${generatedURL}`}></iframe>
               </div>
             </div>
         ) : (

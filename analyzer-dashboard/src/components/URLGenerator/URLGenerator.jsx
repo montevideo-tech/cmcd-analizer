@@ -11,7 +11,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 
 function URLGenerator(props) {
-  const {setIndex} = props;
+  const {setIndex, setAutoplay, autoplay} = props;
   const parentSetGeneratedUrl = props.setGeneratedURL;
   const [field1, setField1] = useState('https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd');
   const [ip, setIp] = useState(window.location.hostname);
@@ -194,6 +194,14 @@ function URLGenerator(props) {
           <div className='col'>
             <button className="custom-button" onClick={handleAddNewObject}>Add new object</button>
           </div>
+        </div>
+        <hr className="divider" />
+        <div className='row'>
+          <div className='col'>
+            <button className={`autoplay-button `+ (autoplay ? "autoplay-enabled" : "")} onClick={() => setAutoplay(!autoplay)}>
+              {(autoplay ? "Disable Autoplay" : "Enable Autoplay")}
+            </button>
+            </div>
         </div>
         <hr className="divider" />
         <div className='row'>

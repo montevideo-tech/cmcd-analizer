@@ -46,6 +46,9 @@
         function init() {
             var video;
             var url = getQueryParam('url'); // https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd
+            var autoplay = getQueryParam('autoplay') == "true";
+            console.log("AUTOPLAY: ")
+            console.log(autoplay);
 
             player = dashjs.MediaPlayer().create();
             video = document.querySelector('video');
@@ -86,7 +89,7 @@
                     }
                 }
             });
-            player.setAutoPlay(false);
+            player.setAutoPlay(autoplay);
             player.attachView(video);
             player.attachSource(url);
         }
